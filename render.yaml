@@ -18,13 +18,16 @@ services:
         fromDatabase:
           name: uniconnect-db
           property: connectionString
-  - type: static
+
+  - type: web
     name: uniconnect-frontend
     rootDir: frontend
+    env: static
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
     envVars:
       - key: VITE_API_BASE
         value: https://uniconnect-backend.onrender.com/api
+
 databases:
   - name: uniconnect-db
